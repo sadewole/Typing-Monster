@@ -84,6 +84,9 @@ header{
 .vid{
   display: none;
 }
+#timer{
+ display: none;
+}
 @media(min-width: 1180px) {
   .container-fluid{
     display: none;

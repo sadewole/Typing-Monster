@@ -1,4 +1,4 @@
-let time=6;
+let time;
 let count = 0;
 
 
@@ -46,37 +46,32 @@ function catchMatch(){
 function setCount(){
     if(time>0){
         time--
+        timer.style.display= 'inline-block';
+        message.innerHTML = ' ';
     }else if(time===0){
         btn.removeAttribute('disabled')
-        randMsg.style.display = 'none';
-        message.innerHTML = 'GameOver!!!'
+        randMsg.innerHTML = ' ';
+        message.innerHTML = 'GameOver!!!';
+         count = 0
     }
     timer.innerHTML= time
 }
 
-// Reset function
-function reset(){
-    if(!btn.hasAttribute('disabled') && message.innerHTML == 'GameOver!!!'){
-        console.log('coment')
-        randMsg.innerHTML = ' ';
-        clearInterval(setInterval(setCount, 1000))
-    }
-}
-
+// Start Game
 start=(e)=>{
-    clearInterval(setInterval(setCount, 1000))
-    time=6
+    time=6;
+    count=0;
     const btn = e.target;
     btn.setAttribute('disabled', 'disabled');
-    //reset()
-    randMsg.style.display='block'
-    
      genRand(arr)
-     setInterval(setCount, 1000)
      inp.addEventListener('input', catchMatch)
+
+
+     score.innerHTML = count;
 }
 
 startGame=()=>{
-    btn.addEventListener('click', start)
+    setInterval(setCount, 1000)
+    btn.addEventListener('click', start);
 }
 startGame();
