@@ -78,3 +78,9 @@ startGame=()=>{
     btn.addEventListener('click', start);
 }
 startGame();
+
+// npm init -y
+// $ npm install -g express-generator
+// $ npm install express -S
+// $ npm install connect -S
+// $ npm install serve-static -S
