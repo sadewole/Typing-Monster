@@ -67,8 +67,8 @@ start=(e)=>{
      inp.addEventListener('input', catchMatch)
      score.innerHTML = count;
 
-     fetch('sample.json')
-     .then(res=> res.json())
+     fetch('./rand.txt')
+     .then(res=> res.text())
      .then(data=> console.log(data))
      .catch(err=> console.log(err))
 }
