@@ -1,7 +1,7 @@
 {
   "name": "typing-moster",
   "version": "1.0.0",
-  "description": "a game that helps all computer user typing skill",
+  "description": "a game that helps all computer user improve their typing skill",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
