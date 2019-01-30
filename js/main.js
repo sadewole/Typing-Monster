@@ -65,9 +65,12 @@ start=(e)=>{
     btn.setAttribute('disabled', 'disabled');
      genRand(arr)
      inp.addEventListener('input', catchMatch)
-
-
      score.innerHTML = count;
+
+     fetch('sample.json')
+     .then(res=> res.json())
+     .then(data=> console.log(data))
+     .catch(err=> console.log(err))
 }
 
 startGame=()=>{
