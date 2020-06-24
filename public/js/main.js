@@ -14,27 +14,27 @@ let score = document.querySelector('#score');
 let arr = require('./random');
 
 // Generate random number
-function genRand(val){
+function genRand(val) {
     let word = Math.floor(Math.random() * val.length);
     return randMsg.innerHTML = val[word];
 }
 
 // Check for match
-function wordMatch(){
-    if(inp.value===randMsg.innerHTML){
-        message.innerHTML= 'Correct!!!';
+function wordMatch() {
+    if (inp.value.toLowerCase() === randMsg.innerHTML.toLowerCase()) {
+        message.innerHTML = 'Correct!!!';
         return true;
-    }else{
+    } else {
         message.innerHTML = '';
         return false;
     }
-}
+};
 
 // get match and process
-function catchMatch(){
-    if(wordMatch()){
-        inp.value='';
-        time=6
+function catchMatch() {
+    if (wordMatch()) {
+        inp.value = '';
+        time = 6
         count++
         genRand(arr)
         diff()
@@ -43,27 +43,27 @@ function catchMatch(){
 }
 
 // Set Timer
-function setCount(){
-    if(time>0){
+function setCount() {
+    if (time > 0) {
         time--
-        timer.style.display= 'inline-block';
+        timer.style.display = 'inline-block';
         message.innerHTML = ' ';
-    }else if(time===0){
+    } else if (time === 0) {
         btn.removeAttribute('disabled')
         randMsg.innerHTML = ' ';
         message.innerHTML = 'GameOver!!!';
         count = 0;
-        inp.value='';
+        inp.value = '';
         let inpDisabled = document.querySelector('#inp');
         inpDisabled.setAttribute('disabled', 'disabled');
     }
-    timer.innerHTML= time
+    timer.innerHTML = time
 }
 
 // change level
-function diff(){
-    difficult=5
-    switch (count){
+function diff() {
+    difficult = 5
+    switch (count) {
         case 25:
             difficult--;
             break;
@@ -80,24 +80,24 @@ function diff(){
             difficult--;
             break;
     }
-    time=difficult
+    time = difficult
 }
 
 // Start Game
-start=(e)=>{
-    difficult=6;
-    time=difficult
-    count=0;
+start = (e) => {
+    difficult = 6;
+    time = difficult
+    count = 0;
     const btn = e.target;
     btn.setAttribute('disabled', 'disabled');
-     genRand(arr)
-     inp.addEventListener('input', catchMatch)
-     inp.removeAttribute('disabled');
-     score.innerHTML = count;
-     
+    genRand(arr)
+    inp.addEventListener('input', catchMatch)
+    inp.removeAttribute('disabled');
+    score.innerHTML = count;
+
 }
 
-startGame=()=>{
+startGame = () => {
     setInterval(setCount, 1000)
     btn.addEventListener('click', start);
 }
